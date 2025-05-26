@@ -1,10 +1,10 @@
 import StackMsg from "./StackMsg.vue";
-import { useDialogs } from "../../stores/dialogs";
+import { requestRender } from "../../stores/dialogs";
 
 const config = { component: StackMsg };
 
 function toast(propsData) {
-  return useDialogs().requestRender(config)(propsData);
+  return requestRender(config)(propsData);
 }
 
 export default toast;

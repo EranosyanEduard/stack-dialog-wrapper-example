@@ -1,12 +1,10 @@
 <script setup>
-import { useDialogs } from "../../stores/dialogs";
-
-const dialogsStore = useDialogs();
+import { dialogs } from "../../stores/dialogs";
 </script>
 
 <template>
   <div class="stack-dialog-wrapper">
-    <template v-for="(dialogsOptions, configId) in dialogsStore.dialogs">
+    <template v-for="(dialogsOptions, configId) in dialogs">
       <component
         :is="dialogsOptions.at(0)?.rootComponent ?? 'div'"
         :key="configId"

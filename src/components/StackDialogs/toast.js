@@ -1,6 +1,6 @@
 import StackToast from "./StackToast.vue";
 import StackToastGroup from "./StackToastGroup.vue";
-import { useDialogs } from "../../stores/dialogs";
+import { requestRender } from "../../stores/dialogs";
 
 const config = {
   component: StackToast,
@@ -8,7 +8,7 @@ const config = {
 };
 
 function toast(propsData) {
-  return useDialogs().requestRender(config)(propsData);
+  return requestRender(config)(propsData);
 }
 
 export default toast;
