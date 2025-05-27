@@ -1,24 +1,29 @@
-<script setup>
-import { defineProps, onMounted, ref } from "vue";
+<script>
+import { defineComponent, onMounted, ref } from "vue";
 
-const emits = defineEmits(["close"]);
-const props = defineProps({
-  color: {
-    type: String,
-    default: null,
+export default defineComponent({
+  name: "StackToast",
+  props: {
+    color: {
+      type: String,
+      default: null,
+    },
+    message: {
+      type: String,
+      default: null,
+    },
   },
-  message: {
-    type: String,
-    default: null,
+  emits: ["close"],
+  setup() {
+    const show = ref(true);
+    onMounted(() => {
+      setTimeout(() => {
+        show.value = false;
+        emits("close");
+      }, 10_000);
+    });
+    return { show };
   },
-});
-
-const show = ref(true);
-onMounted(() => {
-  setTimeout(() => {
-    show.value = false;
-    emits("close");
-  }, 10_000);
 });
 </script>
 

@@ -1,5 +1,4 @@
-import { defineStore } from "pinia";
-import { ref, set, del } from "vue";
+import Vue, { ref, set } from "vue";
 
 function promiseWithResolvers() {
   let resolve, reject;
@@ -20,9 +19,12 @@ const requestRender = (config) => (propsData) => {
   const config_ = {
     ...config,
     configId: dialogs.value[configId]?.length ?? 0,
+    component:
+      Vue.component(config.component.__name) ??
+      Vue.component(config.component.name) ??
+      config.component,
     listeners: {
       close(...args) {
-        console.log("config", config_);
         set(
           dialogs.value,
           configId,
