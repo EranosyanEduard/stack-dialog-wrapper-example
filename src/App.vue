@@ -2,6 +2,7 @@
 import StackDialogWrapper from "./components/StackDialogs/StackDialogWrapper.vue";
 import toast from "./components/StackDialogs/toast";
 import msg from "./components/StackDialogs/msg";
+import "./router-example/build";
 
 const askQuestion = async () => {
   if (await msg({ message: "Are you sure?" })) {
